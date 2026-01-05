@@ -24,6 +24,7 @@ export default function App() {
         defaultCustomData1={defaultData1}
         backgroundEnable={true}
         localStorageEnable={true}
+        DraftifyBackground={"#2345"}
       />
 
       <DraftifyBlocksReader
