@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { CustomBlock, DraftifyBlock } from "draftify";
-import DraftifyReact, { DraftifyBlocksReader } from "draftify-react";
+import DraftifyReact from "draftify-react";
 import "draftify-react/styles.css";
 
 export default function App() {
@@ -14,23 +14,26 @@ export default function App() {
         options={[
           "heading",
           "subheading",
-          "image",
-          "video",
+          "paragraph",
+          "list",
+          "quote",
+          "code",
+          "link",
+          "table",
           "custom-1-H",
-          "custom-2-Img",
         ]}
         CustomEditor1={CustomHeadingEditor}
         CustomOutput1={CustomHeadingOutput}
         defaultCustomData1={defaultData1}
         backgroundEnable={true}
         localStorageEnable={true}
-        DraftifyBackground={"#2345"}
+        // DraftifyBackground={"#2345"}
       />
 
-      <DraftifyBlocksReader
+      {/* <DraftifyBlocksReader
         blocksData={blocksData}
         CustomOutput1={CustomHeadingOutput}
-      />
+      /> */}
     </>
   );
 }
