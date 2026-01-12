@@ -15,6 +15,8 @@ export default function App() {
           "heading",
           "subheading",
           "paragraph",
+          "image",
+          "video",
           "list",
           "quote",
           "code",
