@@ -1,16 +1,27 @@
+// modules
 import { useState } from "react";
-import type { CustomBlock, DraftifyBlock } from "draftify";
-import DraftifyReact from "draftify-react";
+
+// types
+import type { CustomBlock, DraftifyBlock, DraftifyDocument } from "draftify";
+
+// components
+import DraftifyReact, { DraftifyBlocksReader } from "draftify-react";
+
+// component styling
 import "draftify-react/styles.css";
 
 export default function App() {
-  const [blocksData, modifyBlocks] = useState<DraftifyBlock[]>([]);
+  const [draftifyDoc, setDoc] = useState<DraftifyDocument>({
+    metadata: {},
+    version: "1.0.0",
+    blocks: [] as DraftifyBlock[],
+  });
 
   return (
     <>
       <DraftifyReact
-        blocksData={blocksData}
-        modifyBlocks={modifyBlocks}
+        draftifyDoc={draftifyDoc}
+        setDoc={setDoc}
         options={[
           "heading",
           "subheading",
@@ -29,19 +40,29 @@ export default function App() {
         defaultCustomData1={defaultData1}
         backgroundEnable={true}
         localStorageEnable={true}
-        // DraftifyBackground={"#2345"}
+        DraftifyBackground={"#2345"}
       />
 
-      {/* <DraftifyBlocksReader
-        blocksData={blocksData}
+      <DraftifyBlocksReader
+        blocksData={draftifyDoc.blocks}
         CustomOutput1={CustomHeadingOutput}
-      /> */}
+      />
     </>
   );
 }
 
 const defaultData1 = {
   text: "",
+};
+
+const blockStyling = {
+  fontFamily:
+    "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol",
+  border: "none",
+  outline: "none",
+  width: "100%",
+  fontSize: "24px",
+  fontWeight: "630",
 };
 
 function CustomHeadingEditor({
@@ -54,15 +75,7 @@ function CustomHeadingEditor({
   return (
     <input
       type="text"
-      style={{
-        fontFamily:
-          "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol",
-        border: "none",
-        outline: "none",
-        width: "100%",
-        fontSize: "24px",
-        fontWeight: "630",
-      }}
+      style={blockStyling}
       autoFocus
       value={customBlock.data.text}
       onChange={(e) =>
@@ -76,19 +89,5 @@ function CustomHeadingEditor({
 }
 
 function CustomHeadingOutput({ customBlock }: { customBlock: CustomBlock }) {
-  return (
-    <h2
-      style={{
-        fontFamily:
-          "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol",
-        border: "none",
-        outline: "none",
-        width: "100%",
-        fontSize: "24px",
-        fontWeight: "630",
-      }}
-    >
-      {customBlock.data.text}
-    </h2>
-  );
+  return <h2 style={blockStyling}>{customBlock.data.text}</h2>;
 }
