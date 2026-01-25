@@ -40,12 +40,14 @@ export default function App() {
         defaultCustomData1={defaultData1}
         backgroundEnable={true}
         localStorageEnable={true}
-        DraftifyBackground={"#2345"}
+        DraftifyBackground={"linear-gradient(45deg, #ff006e, #8338ec, #3a86ff)"}
+        fontFamily="'Comic Sans MS', 'Courier New', monospace"
       />
 
       <DraftifyBlocksReader
         blocksData={draftifyDoc.blocks}
         CustomOutput1={CustomHeadingOutput}
+        fontFamily="'Comic Sans MS', 'Courier New', monospace"
       />
     </>
   );

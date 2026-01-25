@@ -12,7 +12,7 @@
   "dependencies": {
     "@emotion/is-prop-valid": "^1.4.0",
     "draftify": "^0.1.4",
-    "draftify-react": "^0.2.9",
+    "draftify-react": "^0.3.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },
