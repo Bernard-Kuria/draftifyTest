@@ -42,6 +42,7 @@ export default function App() {
         localStorageEnable={true}
         DraftifyBackground={"linear-gradient(45deg, #ff006e, #8338ec, #3a86ff)"}
         fontFamily="'Comic Sans MS', 'Courier New', monospace"
+        ToolBarEnable={true}
       />
 
       <DraftifyBlocksReader
